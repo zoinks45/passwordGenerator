@@ -1,11 +1,34 @@
 // Assignment code here
-//character length
-var charlength = Number(prompt("How many characters will your password be? Enter a number between 8 and 128"));
+//character length and type declaration
+var charlength 
+var upperChar 
+var numberChar 
+var specialChar 
+var password
+//function for building password
+function generatePassword() {
+  var charlength = (prompt("how long do you want your password (between 8 and 128"));
+  while(charlength < 8 || charlength > 128) {
+    var charlength = (prompt("how long do you want your password (between 8 and 128"));
+  }
+  var upperChar = (confirm("do you want upper case letters?"))
+  var numberChar = (confirm("do you want numbers?"))
+  var specialChar = (confirm("do you want special characters?"))
+  var charCodes = lower
+  if (upperChar) charCodes = charCodes.concat(upper)
+  if (numberChar) charCodes = charCodes.concat(numbers)
+  if (specialChar) charCodes = charCodes.concat(symbols)
+  
+  //loop through character length 
+  var passwordLength = []
+  for (let i = 0; i < charlength; i++) {
+    var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+    passwordLength.push(String.fromCharCode(characterCode))
+  }
+  return passwordLength.join('')
 
-//character type
-var upperChar = confirm("would you like upper case?");
-var numberChar = confirm("would you like numbers?");
-var specialChar = confirm("would you like special characters?")
+  
+}
 
 //generate character codes
 var upper = lowToHigh(65, 90)
@@ -19,20 +42,6 @@ var symbols = lowToHigh(33, 47).concat(
   lowToHigh(123, 126)
 )
 
-// build password
-function buildPassword (charlength, upperChar, numberChar, specialChar){
-  let characters = lower
-  if (upperChar) characters = characters.concat(upper)
-  if (specialChar) characters = characters.concat(symbols)
-  if (numberChar) characters = characters.concat(numbers)
-
-  var passwordCharacters = []
-  for (let i = 0; i< charlength; i++) {
-    var characterCode = characters[Math.floor(math.random() * characters.length)]
-    passwordCharacters.push(String.fromCharCode(characterCode))
-  }
-  return passwordCharacters.join("")
-}
 
 //loop through character codes 
 function lowToHigh(low, high) {
@@ -42,8 +51,6 @@ function lowToHigh(low, high) {
   }
   return array
 }
-
-//show password
 
 
 // Get references to the #generate element
